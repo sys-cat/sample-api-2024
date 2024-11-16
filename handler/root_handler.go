@@ -25,6 +25,7 @@ func RootIndexHandler(w http.ResponseWriter, r *http.Request, p httprouter.Param
 	}
 	err := json.NewEncoder(w).Encode(RootResponse{Message: message})
 	if err != nil {
+		logger.Error("json encode error", "error", err)
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 }
