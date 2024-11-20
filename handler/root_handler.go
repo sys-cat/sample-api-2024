@@ -15,6 +15,7 @@ type RootResponse struct {
 
 func RootIndexHandler(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 	logger := slog.New(slog.NewJSONHandler(os.Stdout, nil))
+	logger.Info("request", "uri", r.RequestURI)
 	message := "Hello, World!"
 	if len(p) == 0 {
 		logger.Info("no params", "params", p)
