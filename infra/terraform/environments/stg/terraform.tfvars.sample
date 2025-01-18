@@ -1,0 +1,5 @@
+project_id = "hoge" 
+region = "asia"
+artifact_registry_repository_id = "sample-api"
+sa_account_id = "sa"
+sa_display_name = "sa-disp"
