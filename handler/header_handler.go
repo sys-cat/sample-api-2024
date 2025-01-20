@@ -5,20 +5,22 @@ import (
 	"log/slog"
 	"net/http"
 	"os"
+
+	"github.com/julienschmidt/httprouter"
 )
 
 type HeaderResponse struct {
-	Method  string
-	Path    string
-	Headers []Header
+	Method  string   `json:"method"`
+	Path    string   `json:"path"`
+	Headers []Header `json:"headers"`
 }
 
 type Header struct {
-	Index string
-	Value []string
+	Index string   `json:"index"`
+	Value []string `json:"value"`
 }
 
-func HeaderIndexHandler(w http.ResponseWriter, r *http.Request) {
+func InfoHandler(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 	logger := slog.New(slog.NewJSONHandler(os.Stdout, nil))
 	logger.Info("request", "uri", r.RequestURI)
 	headers := []Header{}

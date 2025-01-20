@@ -13,10 +13,10 @@ import (
 func main() {
 	logger := slog.New(slog.NewJSONHandler(os.Stdout, nil))
 	router := httprouter.New()
+	router.GET("/api/v1/sample", handler.InfoHandler)
 	router.GET("/", handler.RootIndexHandler)
 	router.GET("/sample-api/", handler.RootIndexHandler)
 	router.GET("/sample-api/:message", handler.RootIndexHandler)
-	router.GET("/sample-2/", handler.HeaderIndexHandler)
 	router.GET("/health", func(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 		w.WriteHeader(http.StatusOK)
 	})
