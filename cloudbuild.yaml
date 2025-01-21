@@ -4,3 +4,5 @@ steps:
     args: [ 'build', '-t', 'asia-northeast1-docker.pkg.dev/$PROJECT_ID/sample-api/main', '.']
 images:
   - 'asia-northeast1-docker.pkg.dev/$PROJECT_ID/sample-api/main'
+options:
+  logging: CLOUD_LOGGING_ONLY
