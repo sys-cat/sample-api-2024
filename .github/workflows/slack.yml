@@ -1,0 +1,19 @@
+on:
+  workflow_call:
+
+env:
+  SLACK_CHANNEL: "times-sys-cat"
+  SLACK_USERNAME: test-gha-run
+  SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+  SLACK_ICON_EMOJI: ":beer:"
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_TITLE: "test"
+          SLACK_COLOR: good
+          SLACK_MESSAGE: "${{ github.ref_name }} でのGithubAction実施"
