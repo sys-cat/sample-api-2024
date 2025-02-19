@@ -12,3 +12,4 @@ jobs:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_TITLE: "GithubAction実施"
           SLACK_MESSAGE: "${{ github.ref_name }} でのGithubAction実施"
+      - run: echo "End"
