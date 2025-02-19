@@ -9,7 +9,7 @@ jobs:
       TARGET_BRANCH: ${{github.ref_name}}
       TAG_BRANCH: ""
     steps:
-      - run: $TAG_BRANCH = echo ${TARGET_BRANCH/\_}
+      - run: TAG_BRANCH = echo ${TARGET_BRANCH//\//_}
       - uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_CHANNEL: "times-sys-cat"
