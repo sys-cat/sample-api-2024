@@ -5,11 +5,15 @@ jobs:
   notify:
     runs-on: ubuntu-latest
 
+    env:
+      TARGET_BRANCH: ${{github.ref_name}}
+      TAG_BRANCH: ""
     steps:
+      - run: $TAG_BRANCH = echo ${TARGET_BRANCH/\_}
       - uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_CHANNEL: "times-sys-cat"
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_TITLE: "GithubAction実施"
-          SLACK_MESSAGE: "${{ github.ref_name }} でのGithubAction実施"
+          SLACK_MESSAGE: "$TAG_BRANCH でのGithubAction実施"
       - run: echo "End"
